@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
 
 from .forms import SignUpForm
 # Create your views here.
@@ -13,10 +13,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            
+           
             return redirect('frontpage')
     else:
         form = SignUpForm()
