@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_REDIRECT_URL = '/rooms/'
 LOGIN_URL = '/login/'
 
@@ -77,9 +77,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'RealTimeChat.wsgi.application'
 ASGI_APPLICATION = 'RealTimeChat.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default' : {
+        'BACKEND' : 'channels.layers.InMemoryChannelLayer'
+    }
+}
+
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases'b
 
 DATABASES = {
     'default': {
